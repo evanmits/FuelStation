@@ -1,0 +1,142 @@
+{
+    "@lat": "23.123233",
+    "@long": "40.12333",
+    "@msg": "Hello user",
+    "station": [
+        {
+            "@stationID": "0001",
+            "@distance": "1.8",
+            "county": {
+                "@countyID": "GR300",
+                "#text": "Ελλάδα"
+            },
+            "municipality": {
+                "@municipalityID": "41336",
+                "#text": "Λάρισα"
+            },
+            "dd": {
+                "@ddID": "41336",
+                "#text": "Δήμος Λάρισας"
+            },
+            "address": "Βόλου 12, Λάρισα",
+            "companyName": "ΑΦΟΙ ΔΡΑΜΗ",
+            "lat": "23.111456",
+            "long": "41.1114567",
+            "h24": {
+                "@value": "0"
+            },
+            "brand": {
+                "@brandID": "1",
+                "#text": "EKO"
+            },
+            "phone": [
+                "2410283954",
+                "2410550477"
+            ],
+            "fuels": [
+                {
+                    "@fuelTypeID": "1",
+                    "@price": "1.959",
+                    "@priceTimeStamp": "2024-04-21 22:35:00",
+                    "#text": "EKO Kinitron Unleaded 95"
+                },
+                {
+                    "@fuelTypeID": "2",
+                    "@price": "1.769",
+                    "@priceTimeStamp": "2024-04-21 22:35:00",
+                    "#text": "EKO DIESEL Avio"
+                }
+            ]
+        },
+        {
+            "@stationID": "00002",
+            "@distance": "2.0",
+            "county": {
+                "@countyID": "GR300",
+                "#text": "Ελλάδα"
+            },
+            "municipality": {
+                "@municipalityID": "41223",
+                "#text": "Λάρισα"
+            },
+            "dd": {
+                "@ddID": "41223",
+                "#text": "Δήμος Λάρισας"
+            },
+            "address": "Φαρσάλων 99, Λάρισα",
+            "companyName": "ΜΑΚΡΑΙΩΝ",
+            "lat": "23.223456",
+            "long": "41.2234567",
+            "h24": {
+                "@value": "0"
+            },
+            "brand": {
+                "@brandID": "2",
+                "#text": "/AVIN"
+            },
+            "phone": "2410555388",
+            "fuels": [
+                {
+                    "@fuelTypeID": "1",
+                    "@price": "1.939",
+                    "@priceTimeStamp": "2024-04-22 05:55:00",
+                    "#text": "Αμόλυβδη AVIN Βest 95"
+                },
+                {
+                    "@fuelTypeID": "2",
+                    "@price": "1.655",
+                    "@priceTimeStamp": "2024-04-22 05:55:00",
+                    "#text": "AVIN Diesel Best"
+                },
+                {
+                    "@fuelTypeID": "3",
+                    "@price": "2.181",
+                    "@priceTimeStamp": "2024-04-22 05:55:00",
+                    "#text": "Αμόλυβδη 100"
+                }
+            ]
+        },
+        {
+            "@stationID": "00003",
+            "@distance": "4.2",
+            "county": {
+                "@countyID": "GR300",
+                "#text": "Ελλάδα"
+            },
+            "municipality": {
+                "@municipalityID": "40003",
+                "#text": "Αγιά Λάρισας"
+            },
+            "dd": {
+                "@ddID": "40003",
+                "#text": "Δήμος Αγιάς"
+            },
+            "address": "Γερακάρι, Αγιά",
+            "companyName": "ΒΑΣΙΛΕΙΟΣ ΧΡΙΣΤΟΥΛΑΣ",
+            "lat": "23.333333",
+            "long": "41.333333",
+            "h24": {
+                "@value": "1"
+            },
+            "brand": {
+                "@brandID": "3",
+                "#text": "BP"
+            },
+            "phone": "2494041433",
+            "fuels": [
+                {
+                    "@fuelTypeID": "1",
+                    "@price": "2.026",
+                    "@priceTimeStamp": "2024-04-16 07:35:00",
+                    "#text": "BP Unleaded 95"
+                },
+                {
+                    "@fuelTypeID": "2",
+                    "@price": "1.719",
+                    "@priceTimeStamp": "2024-04-16 07:35:00",
+                    "#text": "BP Super Diesel"
+                }
+            ]
+        }
+    ]
+}

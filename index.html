@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XML & JSON Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            font-family: "Arial", Arial;
+            background-color: #5D6D7E;
+        }
+        
+        h1 {
+            font-family: 'Fuzzy Bubbles', cursive;
+            text-align: center;
+        }
+        
+        #container {
+            width: 1200px;
+            height: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            position: relative;
+        }
+        
+        #left-container {
+            position: relative;
+            width: 100px;
+            height: 1000px;
+            background-color: gray;
+            float: left;
+        }
+        
+        #button {
+            padding-top: 300px;
+            margin-left: 10px;
+        }
+        
+        #right-container {
+            width: 1050px;
+            height: 1000px;
+            background-color: pink;
+            float: right;
+            position: relative;
+            letter-spacing: 2px;
+        }
+        
+        table {
+            width: 50%;
+        }
+        
+        th {
+            background: #f1f1f1;
+            font-weight: bold;
+            padding: 6px;
+        }
+        
+        td {
+            background: #f9f9f9;
+            padding: 6px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#button1').click(function() {
+                $('#right-container').empty();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'fuel.xml',
+                    dataType: 'xml',
+                    success: function(xml) {
+                        clearContainer();
+
+                        $(xml).find('station').each(function() {
+
+                            // Append new data to the DIV element.
+                            $('#right-container').append(
+                                '<div>' +
+                                '<div><b><u>stationID</u>:</b>' +
+                                $(this).attr('stationID') + '</div> ' +
+                                '<div><b>distance: </b>' +
+                                $(this).attr('distance') + '</div> ' +
+                                '<div><b>address: </b>' +
+                                $(this).find('address').text() + '</div> ' +
+                                '<div><b>companyName: </b>' +
+                                $(this).find('companyName').text() + '</div> ' +
+                                '<div><b>phone: </b>' +
+                                $(this).find('h24').attr('value') + '</div> ' +
+                                '</div>');
+
+                            $(this).find("phone").each(function(i, e) {
+                                $("#right-container").append(
+                                    "<div><b>phone: </b>" + $(e).text() + "</div>"
+                                );
+                            });
+
+
+                            $(this).find("fuel").each(function(i, e) {
+                                $("#right-container").append(
+                                    "<div><b>fuelname: </b>" + $(e).text() + "</div>"
+                                );
+                                $("#right-container").append(
+                                    "<div><b>fuelID: </b>" + $(e).attr("fuelTypeID") + "</div>"
+                                );
+                                $("#right-container").append(
+                                    "<div><b>price:</b>" + $(e).attr("price") + "</div>"
+                                );
+                                $("#right-container").append(
+                                    "<div><b>timestamp: </b>" + $(e).attr("priceTimeStamp") + "</div>"
+                                );
+                            });
+
+                            $('#right-container').append("<br>");
+                        });
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#button2').click(function() {
+                $('#right-container').empty();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'fuel.json',
+                    dataType: 'json',
+                    success: function(d) {
+                        clearContainer();
+
+                        $station = d["station"];
+
+                        for (let $i = 0; $i < $station.length; $i++) {
+
+                            $("#right-container").append(
+                                "<div><b>stationID:</b> " + $station[$i]["@stationID"] + "</div>" +
+                                "<div>distance:" + $station[$i]["@distance"] + "</div>" +
+                                "<div>address: " + $station[$i].address + "</div>" +
+                                "<div> phone: " + $station[$i].phone + "</div>" +
+                                "<div> h24: " + $station[$i].h24["@value"] + "</div>"
+                            );
+
+
+                            for ($fuel of $station[$i].fuels) {
+                                $("#right-container").append(
+                                    "<div> Fuel Name: " +
+                                    $fuel["#text"] +
+                                    " <br> Fuel Type: " +
+                                    $fuel["@fuelTypeID"] +
+                                    " <br> Price: " +
+                                    $fuel["@price"] +
+                                    " <br> Price Stamp: " +
+                                    $fuel["@priceTimeStamp"] + "</div>");
+                            }
+
+                            $("#right-container").append("<br>");
+                        }
+                    },
+                });
+            });
+        });
+
+        function clearContainer() {
+            $(document).ready(function() {
+                $('#clear').click(function() {
+                    $('#right-container').empty();
+                });
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>XML & JSON Viewer</h1>
+    <div id="container">
+        <div id="left-container">
+            <div id="button">
+                <input type="button" id="button1" value="XML file" />
+                <input type="button" id="button2" value="JSON file" />
+                <input type="button" id="clear" value="Clear Data!" />
+            </div>
+        </div>
+        <div id="right-container"></div>
+    </div>
+</body>
+
+</html>
